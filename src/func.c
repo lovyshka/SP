@@ -1,16 +1,5 @@
 #include "hello.h"
 
-int main(int argc, char * argv[]) {
-    if (strcmp(argv[argc - 1], "-i") == 0){
-
-    }
-    else if (strcmp(argv[argc - 1], "-d") == 0){
-
-    }
-    else
-      ERROR_1;
-    return 0;
-}
 
 void write(union bibi write_in){
     FILE * fp = fopen("binary", "wb");
