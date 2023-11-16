@@ -1,7 +1,6 @@
 #include "hello.h"
 
-
-void write(union bibi write_in){
+void bites_write(union bibi write_in){
     FILE * fp = fopen("binary", "wb");
 
     for (int i = 0; i < sizeof (union bibi); i++){
@@ -13,7 +12,7 @@ void write(union bibi write_in){
     }
 }
 
-void read(union bibi * read_out) {
+void bites_read(union bibi * read_out) {
     FILE *fp = fopen("binary", "r");
 
     for (int i = 0; i < sizeof(union bibi); i++) {
@@ -47,9 +46,7 @@ void print_data(union bibi * b){
 }
 
 int invertBits(int num) {
-    for (int i = 0; i < 4; i++) {
-        num = (num ^ (1 << i));
-    }
+    num = num ^ 15;
     return num;
 }
 

@@ -3,8 +3,8 @@ project(SP C)
 
 set(CMAKE_C_STANDARD 11)
 
-include_directories(src)
+include_directories(core_bits)
 
 add_executable(SP
-        src/hello.h
-        src/func.c)
+        hello.h
+        func.c)

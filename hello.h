@@ -22,8 +22,14 @@ union bibi {
 int get_data(union bibi * input); //считывание с консоли
 void print_data(union bibi * output); // просто печать того что мы ввели
 int invertBits(int num); //шифрование
-void write(union bibi write_in); // запись в файл
-void read(union bibi * read_out); // чтение из файла
+void bites_write(union bibi write_in); // запись в файл
+void bites_read(union bibi * read_out); // чтение из файла
 int check_ip(struct input_data d); //проверка на инициализированность айпишников
+char * dec_to_bin(int num); // 10 в 2
+void bin_write(char * input); // запись в двоичном виде
+int bin_to_dec(char * input_bin); //2 в 10
+
+
+
 
 #endif //UNTITLED1_HELLO_H
