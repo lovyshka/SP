@@ -25,10 +25,10 @@ int invertBits(int num); //шифрование
 void bites_write(union bibi write_in); // запись в файл
 void bites_read(union bibi * read_out); // чтение из файла
 int check_ip(struct input_data d); //проверка на инициализированность айпишников
-char * dec_to_bin(int num); // 10 в 2
-void bin_write(char * input); // запись в двоичном виде
-int bin_to_dec(char * input_bin); //2 в 10
-
+char * dec_to_bin(int num); //10 в 2
+int bin_to_dec(char * input_bin); // 2 в 10
+void bin_read(); //чтение
+void bin_write(char input[]); //запись
 
 
 

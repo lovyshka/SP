@@ -1,3 +1,7 @@
-//
-// Created by dejabatg on 16.11.23.
-//
+#include "../hello.h"
+
+
+int main(){
+  bin_read();
+  return 0;
+}
