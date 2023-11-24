@@ -16,7 +16,7 @@ struct input_data{
 
 union bibi {
     struct input_data sas;
-    unsigned char buffer[sizeof(struct input_data)];
+    char buffer[sizeof(struct input_data)];
 };
 
 int get_data(union bibi * input); //считывание с консоли
@@ -27,9 +27,8 @@ void bites_read(union bibi * read_out); // чтение из файла
 int check_ip(struct input_data d); //проверка на инициализированность айпишников
 char * dec_to_bin(int num); //10 в 2
 int bin_to_dec(char * input_bin); // 2 в 10
-void bin_read(); //чтение
-void bin_write(char input[]); //запись
-
-
+void bin_read(union bibi *opt); //чтение
+void bin_write(union bibi opt); //запись
+int add_to_3(int num); // добавить до 3-х
 
 #endif //UNTITLED1_HELLO_H

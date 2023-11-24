@@ -4,7 +4,7 @@
 int main(){
   union bibi write_in = {0};
   if (get_data(&write_in) == 1){
-    bin_write(write_in.buffer);
+    bin_write(write_in);
   }
   else ERROR_1;
   return 0;
