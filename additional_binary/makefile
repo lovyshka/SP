@@ -1,4 +1,4 @@
-all : dec enc
+all : enc dec
 
 dec :
 	gcc -lm binary_dec.c ../func.c -o dec
@@ -9,4 +9,4 @@ enc :
 rebuild : clean all
 
 clean:
-	rm enc dec zero_and_one.txt
+	rm enc dec *.txt

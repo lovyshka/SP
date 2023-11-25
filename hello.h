@@ -22,13 +22,13 @@ union bibi {
 int get_data(union bibi * input); //считывание с консоли
 void print_data(union bibi * output); // просто печать того что мы ввели
 int invertBits(int num); //шифрование
-void bites_write(union bibi write_in); // запись в файл
-void bites_read(union bibi * read_out); // чтение из файла
+void bites_write(union bibi write_in, FILE *fp); // запись в файл
+void bites_read(union bibi * read_out, FILE *fp); // чтение из файла
 int check_ip(struct input_data d); //проверка на инициализированность айпишников
 char * dec_to_bin(int num); //10 в 2
 int bin_to_dec(char * input_bin); // 2 в 10
-void bin_read(union bibi *opt); //чтение
-void bin_write(union bibi opt); //запись
+void bin_read(union bibi *opt, FILE * fp); //чтение
+void bin_write(union bibi opt, FILE * fp);
 int add_to_3(int num); // добавить до 3-х
 
 #endif //UNTITLED1_HELLO_H

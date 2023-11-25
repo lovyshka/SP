@@ -8,6 +8,6 @@ deser:
 	gcc deserialisation.c ../func.c -o deser -lm
 
 clean:
-	rm a.out binary deser serial binary.txt
+	rm a.out binary deser serial *.txt
 
 rebuild: clean all

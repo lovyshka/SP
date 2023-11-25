@@ -1,8 +1,7 @@
 #include "hello.h"
 
 
-void bites_read(union bibi * read_out) {
-    FILE *fp = fopen("binary.txt", "r");
+void bites_read(union bibi * read_out, FILE * fp) {
 
     for (int i = 0; i < sizeof(union bibi); i++) {
 
@@ -46,49 +45,65 @@ int check_ip(struct input_data d){
     return ans;
 }
 
-void bin_read(union bibi *opt){
-    FILE * file = fopen("zero_and_one.txt", "r");
+void bin_read(union bibi *opt, FILE * fp){
 
     int c;
     size_t index = 0;
     for (int i = 0; i < sizeof (union bibi); i++){
         char buffer[8];
-        fread(buffer, sizeof(buffer), 1, file);
+        fread(buffer, sizeof(buffer), 1, fp);
 
         int num = bin_to_dec(buffer);
 
         opt->buffer[i] = invertBits(num);
     }
 
-    fclose(file);  // Закрываем файл
+    fclose(fp);  // Закрываем файл
 
 }
 
 
-void bites_write(union bibi write_in){
-    FILE * fp = fopen("binary.txt", "wb");
+void bites_write(union bibi write_in, FILE *fp){
+    char * tmp = (char *)malloc(sizeof (char));
 
     for (int i = 0; i < sizeof (union bibi); i++){
 
-        char tmp = invertBits(write_in.buffer[i]);
-
-        fwrite(&tmp, sizeof(tmp), 1, fp);
+        tmp = (char *)realloc(tmp, sizeof (char) * (i + 1));
+        tmp[i] = invertBits(write_in.buffer[i]);
 
     }
+
+    for (int i = 0; i < sizeof(union bibi); ++i) {
+
+        char c = tmp[i];
+        fwrite(&c, sizeof(char), 1, fp);
+
+    }
+
+    free(tmp);
 }
-void bin_write(union bibi opt){
-    FILE * stream = fopen("zero_and_one.txt", "w");
+
+void bin_write(union bibi opt, FILE * fp){
+
+    char * tmp = (char *)malloc(sizeof (char));
+    strcpy(tmp, opt.buffer);
 
     for (int i =0; i< sizeof(union bibi); i++) {
 
-        int tmp = invertBits(opt.buffer[i]); //инвертнули
+        tmp = (char *)realloc(tmp, sizeof(char) * (i + 1));
+        tmp[i] = invertBits(opt.buffer[i]); // инвертнули
+    }
 
-        char * binary = dec_to_bin(tmp); //из 10 в 2
+    for (int i = 0; i < sizeof (union  bibi); ++i) {
 
-        fprintf(stream,"%s", binary); // положили
+        char * binary = dec_to_bin(tmp[i]); //из 10 в 2
+
+        fprintf(fp,"%s", binary); // положили
 
         free(binary); //освободили то что заняли в dec_to_bin
+
     }
+    free(tmp);
 }
 
 char * dec_to_bin(int num){
@@ -109,11 +124,13 @@ int bin_to_dec(char * input_bin){
     int result = 0;
     int len = strlen(input_bin);
     for (int i = 0; i < len; i++) {
-        if(input_bin[(len - 1) - i] == '1') result += pow(2, i);
+        if(input_bin[(len - 1) - i] == '1') result += (int)powf(2, i);
     }
 
     return result;
 }
+
+
 
 int add_to_3(int num){
     if (num % 3 != 0){
@@ -126,13 +143,4 @@ int add_to_3(int num){
 
 
 
-void kal(){
-    int buff[20];
-    for (int i = 0; i < 20; ++i) {
-      scanf("%d", buff[i]);
-    }
 
-    for (int i = 0; i < sizeof (buff)/sizeof (int); ++i) {
-
-    }
-}
